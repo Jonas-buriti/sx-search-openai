@@ -49,7 +49,7 @@ def live_server_url(mock_env, free_port: int) -> Generator[str, None, None]:
 
 def test_home(page: Page, live_server_url: str):
     page.goto(live_server_url)
-    expect(page).to_have_title("GPT + Enterprise data | Sample")
+    expect(page).to_have_title("SBT - Law GPT")
 
 
 def test_chat(page: Page, live_server_url: str):
@@ -65,10 +65,10 @@ def test_chat(page: Page, live_server_url: str):
 
     # Check initial page state
     page.goto(live_server_url)
-    expect(page).to_have_title("GPT + Enterprise data | Sample")
+    expect(page).to_have_title("SBT - Law GPT")
     expect(page.get_by_role("heading", name="Chat with your data")).to_be_visible()
-    expect(page.get_by_role("button", name="Clear chat")).to_be_disabled()
-    expect(page.get_by_role("button", name="Developer settings")).to_be_enabled()
+    expect(page.get_by_role("button", name="Limpar chat")).to_be_disabled()
+    expect(page.get_by_role("button", name="Configurações")).to_be_enabled()
 
     # Ask a question and wait for the message to appear
     page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
@@ -79,4 +79,4 @@ def test_chat(page: Page, live_server_url: str):
 
     expect(page.get_by_text("Whats the dental plan?")).to_be_visible()
     expect(page.get_by_text("The capital of France is Paris.")).to_be_visible()
-    expect(page.get_by_role("button", name="Clear chat")).to_be_enabled()
+    expect(page.get_by_role("button", name="Limpar chat")).to_be_enabled()

@@ -4,9 +4,9 @@ import github from "../../assets/github.svg";
 
 import styles from "./Layout.module.css";
 
-import { useLogin } from "../../authConfig"
+import { useLogin } from "../../authConfig";
 
-import { LoginButton } from "../../components/LoginButton"
+import { LoginButton } from "../../components/LoginButton";
 
 const Layout = () => {
     return (
@@ -14,7 +14,7 @@ const Layout = () => {
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer}>
                     <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>GPT + Enterprise data | Sample</h3>
+                        <h3 className={styles.headerTitle}>SBT - Law GPT</h3>
                     </Link>
                     <nav>
                         <ul className={styles.headerNavList}>
@@ -23,12 +23,13 @@ const Layout = () => {
                                     Chat
                                 </NavLink>
                             </li>
-                            <li className={styles.headerNavLeftMargin}>
+
+                            <li style={{ display: "none" }} className={styles.headerNavLeftMargin}>
                                 <NavLink to="/qa" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
                                     Ask a question
                                 </NavLink>
                             </li>
-                            <li className={styles.headerNavLeftMargin}>
+                            <li style={{ display: "none" }} className={styles.headerNavLeftMargin}>
                                 <a href="https://aka.ms/entgptsearch" target={"_blank"} title="Github repository link">
                                     <img
                                         src={github}
@@ -42,8 +43,8 @@ const Layout = () => {
                             </li>
                         </ul>
                     </nav>
-                    <h4 className={styles.headerRightText}>Azure OpenAI + Cognitive Search</h4>
-                    {useLogin && <LoginButton/>}
+                    <h4 className={styles.headerRightText}>Azure OpenAI</h4>
+                    {useLogin && <LoginButton />}
                 </div>
             </header>
 
