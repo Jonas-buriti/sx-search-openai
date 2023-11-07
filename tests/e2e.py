@@ -53,15 +53,18 @@ def test_home(page: Page, live_server_url: str):
 
 
 def test_chat(page: Page, live_server_url: str):
-    # Set up a mock route to the /chat_stream endpoint
+    # Set up a mock route to the /chat endpoint with streaming results
     def handle(route: Route):
+        # Assert that session_state is specified in the request (None for now)
+        session_state = route.request.post_data_json["session_state"]
+        assert session_state is None
         # Read the JSONL from our snapshot results and return as the response
         f = open("tests/snapshots/test_app/test_chat_stream_text/client0/result.jsonlines")
         jsonl = f.read()
         f.close()
         route.fulfill(body=jsonl, status=200, headers={"Transfer-encoding": "Chunked"})
 
-    page.route("*/**/chat_stream", handle)
+    page.route("*/**/chat", handle)
 
     # Check initial page state
     page.goto(live_server_url)
@@ -71,8 +74,8 @@ def test_chat(page: Page, live_server_url: str):
     expect(page.get_by_role("button", name="Configurações")).to_be_enabled()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
+    page.get_by_placeholder("Digite uma pergunta").click()
+    page.get_by_placeholder("Digite uma pergunta").fill(
         "Whats the dental plan?"
     )
     page.get_by_role("button", name="Ask question button").click()
