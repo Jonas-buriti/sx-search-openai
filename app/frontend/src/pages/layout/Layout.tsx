@@ -14,10 +14,11 @@ const Layout = () => {
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer}>
                     <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>SBT - Law GPT</h3>
+                        <img src="https://www.sbt.com.br/assets/images/logo-sbt.webp" alt="SBT logo" width="40px" height="40px" className={styles.headerLogo} />
+                        <h3 className={styles.headerTitle}>Law GPT</h3>
                     </Link>
                     <nav>
-                        <ul className={styles.headerNavList}>
+                        <ul className={styles.headerNavList} style={{ display: "none" }}>
                             <li>
                                 <NavLink to="/" className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}>
                                     Chat
