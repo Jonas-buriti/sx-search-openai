@@ -13,7 +13,7 @@ const EXAMPLES: ExampleModel[] = [
         value: `Quais são os direitos de uso da novela "A Infância de Romeu e Julieta"`
     },
     { text: "O que pode me dizer sobre a M&M EVENTOS LTDA?", value: "O que pode me dizer sobre a M&M EVENTOS LTDA?" },
-    { text: "Qual o pacote de mídia/entregas da Mattel?", value: "Qual o pacote de mídia/entregas da Mattel?" }
+    { text: "Como funciona o licenciamento do programa RBD LA FAMILIA?", value: "Como funciona o licenciamento do programa RBD LA FAMILIA?" }
 ];
 
 interface Props {
